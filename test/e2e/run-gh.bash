@@ -16,6 +16,8 @@ KIND_CACHE_PATH="${CACHE_DIR}/kind-$KIND_VERSION"
 KIND_CLUSTER_PREFIX=flux-e2e
 BATS_EXTRA_ARGS=""
 
+sudo mv "$(go env GOPATH)/bin/fluxctl" "/usr/local/bin/fluxctl"
+
 # shellcheck disable=SC1090
 source "${E2E_DIR}/lib/defer.bash"
 trap run_deferred EXIT
