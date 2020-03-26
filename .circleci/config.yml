@@ -101,7 +101,7 @@ jobs:
       - run: make test TEST_FLAGS="-race -tags integration -timeout 5m"
       - run: make check-generated
       - run: make all
-      - run: E2E_KIND_CLUSTER_NUM=4 make e2e
+      #- run: E2E_KIND_CLUSTER_NUM=4 make e2e
       - run: make test-docs
       - save_cache:
           key: cache-{{ checksum "Makefile" }}
@@ -154,10 +154,11 @@ workflows:
   version: 2
   build-and-push:
     jobs:
+      - helm
       - build:
           filters:
-            branches:
-              ignore: /.*/
+            tags:
+              only: /[0-9]+(\.[0-9]+)*(-[a-z0-9]+)?/
 
   release-helm:
     jobs:
