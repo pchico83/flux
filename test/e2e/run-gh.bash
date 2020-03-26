@@ -31,5 +31,5 @@ E2E_TESTS=${E2E_TESTS:-.}
 (
   cd "${E2E_DIR}"
   # shellcheck disable=SC2086
-  "${E2E_DIR}/bats/bin/bats" -t ${BATS_EXTRA_ARGS} .
+  "${E2E_DIR}/bats/bin/bats" -t ${BATS_EXTRA_ARGS} ${E2E_TESTS}
 )
