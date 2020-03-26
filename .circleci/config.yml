@@ -154,11 +154,10 @@ workflows:
   version: 2
   build-and-push:
     jobs:
-      - helm
       - build:
           filters:
-            tags:
-              only: /[0-9]+(\.[0-9]+)*(-[a-z0-9]+)?/
+            branches:
+              ignore: /.*/
 
   release-helm:
     jobs:
